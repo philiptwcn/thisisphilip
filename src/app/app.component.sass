@@ -1,0 +1,35 @@
+@font-face
+  font-family: 'Noto Sans TC', sans-serif
+  src: url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:400,700&display=swap&subset=chinese-traditional')
+
+$family-sans-serif: 'Noto Sans TC', sans-serif
+
+.svg-icon 
+  width: 1em
+  height: 1em
+
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect 
+  fill: #fff
+
+
+.svg-icon circle
+  stroke: #fff
+  stroke-width: 1
+
+.button
+    padding: 0 .8rem 0 .8rem 
+    transform: rotate(-90deg)
+
+
+@import "~bulma/bulma.sass"
+
++touch
+  .button
+    margin: 0 0 0 85vw
+
++desktop
+  .button
+    margin: 0 0 0 92vw
