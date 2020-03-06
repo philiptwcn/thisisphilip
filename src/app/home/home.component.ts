@@ -13,9 +13,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     const texts = [
-      'Philip',
-      'a designer',
-      'a frontend developer'
+      'design graphics.',
+      'take photographs.',
+      'design websites.'
     ];
 
     let count = 0;
@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
         count++;
         index = 0;
       }
-      setTimeout(type, 400);
+      setTimeout(type, 200);
     })();
   }
 
