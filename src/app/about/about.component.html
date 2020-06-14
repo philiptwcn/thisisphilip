@@ -1,1 +1,15 @@
-<p>about works!</p>
+<div class="container has-text-centered">
+  <ul class="container-fluid columns is-multiline is-vcentered is-mobile">
+    <li *ngFor="let case of cases" class="column is-3-desktop is-6-touch">
+      <p class="content is-size-5 is-size-6-touch is-family-sans-serif">
+        {{ case.fields.title }}
+      </p>
+      <p class="content is-size-6 is-size-7-touch is-family-sans-serif">
+        {{ case.fields.description }}
+      </p>
+      <ng-container *ngFor="let image of case.fields.images">
+        <img src="{{ image.fields.file.url }}" alt="case image" class="image" />
+      </ng-container>
+    </li>
+  </ul>
+</div>

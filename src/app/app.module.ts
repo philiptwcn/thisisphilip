@@ -14,9 +14,11 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
+import { AboutComponent } from './about/about.component';
+
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { AboutComponent } from './about/about.component';
+import { ContentfulService } from './core/services/contentful.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,7 @@ import { AboutComponent } from './about/about.component';
     MatButtonModule,
     MatIconModule,
   ],
-  providers: [],
+  providers: [ContentfulService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
