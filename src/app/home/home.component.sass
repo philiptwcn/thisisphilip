@@ -1,68 +1,74 @@
 .home-main
-    margin-top: 10vh
-    margin-left: auto
-    max-width: 90vw
+  // margin-top: 10vh
+  // margin-left: auto
+  // max-width: 90vw
+  // max-height: 80vh
+  overflow: hidden
 .introBox
-    position: absolute
-    z-index: 3
+  float: left
+  z-index: 3
 .intro
-    display: flex
-    
+  display: flex
+
 .typing
-    position: relative
-    margin-left: 10px
+  position: relative
+  margin-left: 10px
 
 .typing::after
-    content: ""
-    position: absolute
-    right: -5px
-    width: 1px
-    height: 90%
-    border-right: 2px solid grey
-    animation: blink 0.5s infinite ease
+  content: ""
+  position: absolute
+  right: -5px
+  width: 1px
+  height: 90%
+  border-right: 2px solid grey
+  animation: blink 0.5s infinite ease
 
 @keyframes blink
-    0%
-        opacity: 0
-    100%
-        opacity: 1
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+.headContainer
+  overflow: hidden
+  float: right
 
 .home-circle
-    position: relative
-    background: linear-gradient(306deg, rgba(246,115,177,1) 0%, rgba(229,187,236,1) 50%, rgba(0,212,255,1) 100%)
+  position: relative
+  background: linear-gradient(306deg, rgba(246,115,177,1) 0%, rgba(229,187,236,1) 50%, rgba(0,212,255,1) 100%)
 
 .head
-    position: relative
+  position: relative
 @import "~bulma/bulma.sass"
 
 +touch
-    .introBox
-        margin: -5vh 0 0 2vw
-    .headContainer
-        margin-left: auto
-        max-width: 70vw
-    .home-circle
-        width: 60vw
-        height: 60vw
-        border-radius: 60vw
+  .introBox
+    margin: 5vh 0 0 2vw
+  .headContainer
+    max-width: 70vw
+  .home-circle
+    width: 60vw
+    height: 60vw
+    border-radius: 60vw
 
-    .head
-        max-width: 70vw
-        top: -55vw
+  .head
+    max-width: 70vw
+    max-height: 70vh
+    top: -55vw
 
 +desktop
-    .introBox
-        margin: 15vh 0 0 10px
-    .headContainer
-        margin-left: auto
-        max-width: 50vw
+  .introBox
+    margin: 15vh 0 0 10vw
+  .headContainer
+    max-width: 50vw
 
-    .home-circle
-        width: 40vw
-        height: 40vw
-        border-radius: 40vw
+  .home-circle
+    width: 40vw
+    height: 40vw
+    border-radius: 40vw
 
-    .head
-        max-width: 50vw
-        top: -35vw
-        left: -5vw
+  .head
+    max-width: 50vw
+    max-height: 70vh
+    top: -35vw
+    left: -5vw
