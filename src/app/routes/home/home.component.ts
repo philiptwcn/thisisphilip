@@ -1,21 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
-
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.sass']
+  styleUrls: ['./home.component.sass'],
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     const texts = [
       'design graphics.',
       'take photographs.',
-      'design websites.'
+      'design websites.',
+      'develop UX plans',
     ];
 
     let count = 0;
@@ -38,5 +36,4 @@ export class HomeComponent implements OnInit {
       setTimeout(type, 200);
     })();
   }
-
 }

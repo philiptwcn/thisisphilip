@@ -11,10 +11,13 @@ import { MatIconModule } from '@angular/material/icon';
 
 // components
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HomeComponent } from './home/home.component';
-import { FooterComponent } from './footer/footer.component';
-import { AboutComponent } from './about/about.component';
+// layout
+import { NavbarComponent } from './layout/navbar/navbar.component';
+import { FooterComponent } from './layout/footer/footer.component';
+// routes
+import { HomeComponent } from './routes/home/home.component';
+import { AboutComponent } from './routes/about/about.component';
+import { WorksComponent } from './routes/works/works.component';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -27,6 +30,7 @@ import { ContentfulService } from './core/services/contentful.service';
     HomeComponent,
     FooterComponent,
     AboutComponent,
+    WorksComponent,
   ],
   imports: [
     BrowserModule,

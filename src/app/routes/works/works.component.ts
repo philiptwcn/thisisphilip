@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ContentfulService } from '../core/services/contentful.service';
+import { ContentfulService } from '../../core/services/contentful.service';
 import { Entry } from 'contentful';
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.sass'],
+  selector: 'app-works',
+  templateUrl: './works.component.html',
+  styleUrls: ['./works.component.sass'],
 })
-export class AboutComponent implements OnInit {
+export class WorksComponent implements OnInit {
   cases: Entry<any>[];
 
   constructor(private contentfulService: ContentfulService) {}
