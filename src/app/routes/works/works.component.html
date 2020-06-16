@@ -1,21 +1,142 @@
-<div class="container has-text-centered">
-  <ul class="container-fluid columns is-multiline is-vcentered is-mobile">
-    <li *ngFor="let case of cases" class="column is-3-desktop is-6-touch">
-      <p class="content is-size-5 is-size-6-touch is-family-sans-serif">
-        {{ case.fields.title }}
-      </p>
-      <p class="content is-size-6 is-size-7-touch is-family-sans-serif">
-        {{ case.fields.description }}
-      </p>
-      <ng-container *ngFor="let image of case.fields.images; let i = index">
-        <ng-container *ngIf="i === 0">
-          <img
-            src="{{ image.fields.file.url }}"
-            alt="case image"
-            class="image"
-          />
-        </ng-container>
-      </ng-container>
-    </li>
-  </ul>
-</div>
+<mat-tab-group mat-align-tabs="center" color="primary">
+  <mat-tab label="Graphics">
+    <ng-template matTabContent>
+      <div class="container has-text-centered">
+        <ul class="container-fluid columns is-multiline is-vcentered is-mobile">
+          <ng-container *ngFor="let case of cases">
+            <ng-container *ngIf="case.fields.category === 'graphic'">
+              <li class="column is-3-desktop is-6-touch">
+                <p
+                  class="content is-size-5 is-size-6-touch is-family-sans-serif"
+                >
+                  {{ case.fields.title }}
+                </p>
+                <p
+                  class="content is-size-6 is-size-7-touch is-family-sans-serif"
+                >
+                  {{ case.fields.description }}
+                </p>
+                <ng-container
+                  *ngFor="let image of case.fields.images; let i = index"
+                >
+                  <ng-container *ngIf="i === 0">
+                    <img
+                      src="{{ image.fields.file.url }}"
+                      alt="case image"
+                      class="image"
+                    />
+                  </ng-container>
+                </ng-container>
+              </li>
+            </ng-container>
+          </ng-container>
+        </ul>
+      </div>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Products">
+    <ng-template matTabContent>
+      <div class="container has-text-centered">
+        <ul class="container-fluid columns is-multiline is-vcentered is-mobile">
+          <ng-container *ngFor="let case of cases">
+            <ng-container *ngIf="case.fields.category === 'product'">
+              <li class="column is-3-desktop is-6-touch">
+                <p
+                  class="content is-size-5 is-size-6-touch is-family-sans-serif"
+                >
+                  {{ case.fields.title }}
+                </p>
+                <p
+                  class="content is-size-6 is-size-7-touch is-family-sans-serif"
+                >
+                  {{ case.fields.description }}
+                </p>
+                <ng-container
+                  *ngFor="let image of case.fields.images; let i = index"
+                >
+                  <ng-container *ngIf="i === 0">
+                    <img
+                      src="{{ image.fields.file.url }}"
+                      alt="case image"
+                      class="image"
+                    />
+                  </ng-container>
+                </ng-container>
+              </li>
+            </ng-container>
+          </ng-container>
+        </ul>
+      </div>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Photography">
+    <ng-template matTabContent>
+      <div class="container has-text-centered">
+        <ul class="container-fluid columns is-multiline is-vcentered is-mobile">
+          <ng-container *ngFor="let case of cases">
+            <ng-container *ngIf="case.fields.category === 'photography'">
+              <li class="column is-3-desktop is-6-touch">
+                <p
+                  class="content is-size-5 is-size-6-touch is-family-sans-serif"
+                >
+                  {{ case.fields.title }}
+                </p>
+                <p
+                  class="content is-size-6 is-size-7-touch is-family-sans-serif"
+                >
+                  {{ case.fields.description }}
+                </p>
+                <ng-container
+                  *ngFor="let image of case.fields.images; let i = index"
+                >
+                  <ng-container *ngIf="i === 0">
+                    <img
+                      src="{{ image.fields.file.url }}"
+                      alt="case image"
+                      class="image"
+                    />
+                  </ng-container>
+                </ng-container>
+              </li>
+            </ng-container>
+          </ng-container>
+        </ul>
+      </div>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Web & UI">
+    <ng-template matTabContent>
+      <div class="container has-text-centered">
+        <ul class="container-fluid columns is-multiline is-vcentered is-mobile">
+          <ng-container *ngFor="let case of cases">
+            <ng-container *ngIf="case.fields.category === 'web & ui'">
+              <li class="column is-3-desktop is-6-touch">
+                <p
+                  class="content is-size-5 is-size-6-touch is-family-sans-serif"
+                >
+                  {{ case.fields.title }}
+                </p>
+                <p
+                  class="content is-size-6 is-size-7-touch is-family-sans-serif"
+                >
+                  {{ case.fields.description }}
+                </p>
+                <ng-container
+                  *ngFor="let image of case.fields.images; let i = index"
+                >
+                  <ng-container *ngIf="i === 0">
+                    <img
+                      src="{{ image.fields.file.url }}"
+                      alt="case image"
+                      class="image"
+                    />
+                  </ng-container>
+                </ng-container>
+              </li>
+            </ng-container>
+          </ng-container>
+        </ul>
+      </div>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>
