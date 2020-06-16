@@ -5,7 +5,7 @@
     aria-label="main navigation"
   ></app-navbar>
   <section class="outlet">
-    <router-outlet></router-outlet>
+    <router-outlet (activate)="scrollTop()"></router-outlet>
   </section>
 
   <button mat-fab color="primary" (click)="scrollTop()">

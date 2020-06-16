@@ -26,11 +26,11 @@ export class HomeComponent implements OnInit {
         count = 0;
       }
       currentText = texts[count];
-      letter = currentText.slice(0, ++index);
+      letter = currentText.slice(0, (index += 1));
 
       document.querySelector('.typing').textContent = letter;
       if (letter.length === currentText.length) {
-        count++;
+        count += 1;
         index = 0;
       }
       setTimeout(type, 200);

@@ -2,12 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { AppRoutingModule } from './app-routing.module';
+import { environment } from '../environments/environment';
 
-// angular material
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import { MaterialModule } from './core/modules/material-module';
+import { ContentfulService } from './core/services/contentful.service';
 
 // components
 import { AppComponent } from './app.component';
@@ -19,16 +20,12 @@ import { HomeComponent } from './routes/home/home.component';
 import { AboutComponent } from './routes/about/about.component';
 import { WorksComponent } from './routes/works/works.component';
 
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-import { ContentfulService } from './core/services/contentful.service';
-
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent,
     FooterComponent,
+    HomeComponent,
     AboutComponent,
     WorksComponent,
   ],
@@ -40,8 +37,7 @@ import { ContentfulService } from './core/services/contentful.service';
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),
-    MatButtonModule,
-    MatIconModule,
+    MaterialModule,
   ],
   providers: [ContentfulService],
   bootstrap: [AppComponent],
