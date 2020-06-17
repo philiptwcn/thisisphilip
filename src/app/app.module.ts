@@ -1,23 +1,24 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ServiceWorkerModule } from '@angular/service-worker';
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ServiceWorkerModule } from "@angular/service-worker";
 
-import { AppRoutingModule } from './app-routing.module';
-import { environment } from '../environments/environment';
+import { environment } from "../environments/environment";
+import { AppRoutingModule } from "./app-routing.module";
 
-import { MaterialModule } from './core/modules/material-module';
-import { ContentfulService } from './core/services/contentful.service';
+import { MaterialModule } from "./core/modules/material-module";
+import { ContentfulService } from "./core/services/contentful.service";
 
-import { AppComponent } from './app.component';
+import { AppComponent } from "./app.component";
+import { FooterComponent } from "./layout/footer/footer.component";
 // layout
-import { NavbarComponent } from './layout/navbar/navbar.component';
-import { FooterComponent } from './layout/footer/footer.component';
+import { NavbarComponent } from "./layout/navbar/navbar.component";
+import { AboutComponent } from "./routes/about/about.component";
 // routes
-import { HomeComponent } from './routes/home/home.component';
-import { AboutComponent } from './routes/about/about.component';
-import { WorksComponent } from './routes/works/works.component';
+import { HomeComponent } from "./routes/home/home.component";
+import { WorkDialogComponent } from "./routes/works/work-dialog.component";
+import { WorksComponent } from "./routes/works/works.component";
 
 @NgModule({
   declarations: [
@@ -27,18 +28,19 @@ import { WorksComponent } from './routes/works/works.component';
     HomeComponent,
     AboutComponent,
     WorksComponent,
+    WorkDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
     BrowserAnimationsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production,
+    ServiceWorkerModule.register("ngsw-worker.js", {
+      enabled: environment.production
     }),
-    MaterialModule,
+    MaterialModule
   ],
   providers: [ContentfulService],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
