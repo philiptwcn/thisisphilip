@@ -27,7 +27,7 @@ export class ContentfulService {
     space: string;
     accessToken: string;
   };
-  titleHandlers: Function[];
+  titleHandlers = [];
 
   constructor() {
     try {
@@ -37,7 +37,7 @@ export class ContentfulService {
     }
 
     this.titleHandlers = [];
-    this._createClient();
+    this.createClient();
     this.getSpace();
   }
 
@@ -106,7 +106,7 @@ export class ContentfulService {
     localStorage.setItem('catalogConfig', JSON.stringify(config));
     this.config = config;
 
-    this._createClient();
+    this.createClient();
     this.getSpace();
 
     return Object.assign({}, this.config);
@@ -117,13 +117,13 @@ export class ContentfulService {
     localStorage.removeItem('catalogConfig');
     this.config = CONFIG.credentials;
 
-    this._createClient();
+    this.createClient();
     this.getSpace();
 
     return Object.assign({}, this.config);
   }
 
-  _createClient() {
+  createClient() {
     this.cdaClient = createClient({
       space: this.config.space,
       accessToken: this.config.accessToken,
