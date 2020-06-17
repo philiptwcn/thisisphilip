@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  space: "lzkpvmwdzwc6",
+  spaceId: "lzkpvmwdzwc6",
   accessToken: "cixMlBKtWoYGrYV6cADwNdAProGI9Fcq1QjBdW9G4QE",
 };
 
