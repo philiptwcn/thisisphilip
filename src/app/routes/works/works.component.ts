@@ -9,28 +9,14 @@ import { Entry } from 'contentful';
 })
 export class WorksComponent implements OnInit {
   cases: Entry<any>[] = [];
-  isAll: boolean;
-  isGraphic = false;
-  isProduct = false;
-  isPhoto = false;
-  isWeb = false;
+  caseCategories = [
+    { label: 'Web & UI', category: 'web & ui' },
+    { label: 'Graphics', category: 'graphic' },
+    { label: 'Products', category: 'product' },
+    { label: 'Photography', category: 'photography' },
+  ];
 
   constructor(private contentfulService: ContentfulService) {}
-
-  checkAll() {
-    return (this.isAll = ![
-      this.isGraphic,
-      this.isPhoto,
-      this.isProduct,
-      this.isWeb,
-    ].includes(true));
-  }
-
-  getCasesByCategoryName(category: string) {
-    this.contentfulService
-      .getCasesByCategoryName(category)
-      .then((res) => (this.cases = res));
-  }
 
   ngOnInit(): void {
     this.contentfulService.getCases().then((result) => {

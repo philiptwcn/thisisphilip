@@ -10,7 +10,6 @@ import { environment } from '../environments/environment';
 import { MaterialModule } from './core/modules/material-module';
 import { ContentfulService } from './core/services/contentful.service';
 
-// components
 import { AppComponent } from './app.component';
 // layout
 import { NavbarComponent } from './layout/navbar/navbar.component';
