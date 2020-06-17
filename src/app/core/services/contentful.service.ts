@@ -1,29 +1,30 @@
 import { Injectable } from "@angular/core";
 import { ContentfulClientApi, Entry, Space, createClient } from "contentful";
+import { environment } from "src/environments/environment";
 
 // change these to include your own settings
 const CONFIG = {
   credentials: {
-    space: "lzkpvmwdzwc6",
-    accessToken: "cixMlBKtWoYGrYV6cADwNdAProGI9Fcq1QjBdW9G4QE"
+    space: environment.space,
+    accessToken: environment.accessToken,
   },
 
   contentTypeIds: {
     case: "case",
-    video: "video"
+    video: "video",
   },
   fieldIds: {
-    category: "category"
-  }
+    category: "category",
+  },
 };
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class ContentfulService {
   private cdaClient = createClient({
     space: CONFIG.credentials.space,
-    accessToken: CONFIG.credentials.accessToken
+    accessToken: CONFIG.credentials.accessToken,
   });
   config: {
     space: string;
@@ -63,7 +64,7 @@ export class ContentfulService {
         Object.assign(
           {
             content_type: CONFIG.contentTypeIds.case,
-            order: "-sys.createdAt,sys.id"
+            order: "-sys.createdAt,sys.id",
           },
           query
         )
@@ -86,7 +87,7 @@ export class ContentfulService {
     return this.cdaClient
       .getEntries({
         content_type: CONFIG.contentTypeIds.case,
-        query: categories
+        query: categories,
       })
       .then(res => res.items);
   }
@@ -129,7 +130,7 @@ export class ContentfulService {
   createClient() {
     this.cdaClient = createClient({
       space: this.config.space,
-      accessToken: this.config.accessToken
+      accessToken: this.config.accessToken,
     });
   }
 }
