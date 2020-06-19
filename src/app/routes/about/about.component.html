@@ -1,0 +1,5 @@
+<ng-container *ngIf="about$ | async as cases">
+  <div class="container" *ngFor="let case of cases">
+    <div class="text" [innerHTML]="case.fields.introduction | mdToHtml"></div>
+  </div>
+</ng-container>

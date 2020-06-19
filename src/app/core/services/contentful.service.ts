@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ContentfulClientApi, Entry, Space, createClient } from "contentful";
+import { from } from "rxjs";
+import { map } from "rxjs/operators";
 import { environment } from "src/environments/environment";
 
 // change these to include your own settings
@@ -7,28 +9,31 @@ const CONFIG = {
   credentials: {
     space: environment.spaceId,
     accessToken: environment.accessToken,
+    environment: environment.environmentId
   },
 
   contentTypeIds: {
     case: "case",
-    video: "video",
+    about: "about"
   },
   fieldIds: {
-    category: "category",
-  },
+    category: "category"
+  }
 };
 
 @Injectable({
-  providedIn: "root",
+  providedIn: "root"
 })
 export class ContentfulService {
   private cdaClient = createClient({
     space: CONFIG.credentials.space,
     accessToken: CONFIG.credentials.accessToken,
+    environment: CONFIG.credentials.environment
   });
   config: {
     space: string;
     accessToken: string;
+    environment: string;
   };
   titleHandlers = [];
 
@@ -58,55 +63,55 @@ export class ContentfulService {
   }
 
   // fetch cases
-  getCases(query?: object): Promise<Entry<any>[]> {
-    return this.cdaClient
-      .getEntries(
+  getEntriesByType(typeId: string, query?: object) {
+    return from(
+      this.cdaClient.getEntries(
         Object.assign(
           {
-            content_type: CONFIG.contentTypeIds.case,
-            order: "-sys.createdAt,sys.id",
+            content_type: typeId,
+            order: "-sys.createdAt,sys.id"
           },
           query
         )
       )
-      .then(res => res.items);
+    ).pipe(map(res => res.items));
   }
 
-  // fetch cases with a given slug
-  // and return one of them
-  getCase(slug: string): Promise<Entry<any>> {
-    return this.getCases({ "fields.slug": slug }).then(items => items[0]);
-  }
-
-  getCaseById(id: string): Promise<Entry<any>> {
-    return this.cdaClient.getEntry(id).then(res => res);
+  getEntryById(id: string) {
+    return from(this.cdaClient.getEntry(id)).pipe(map(res => res));
   }
 
   // fetch categories
-  getCategories(categories?: object): Promise<Entry<any>[]> {
-    return this.cdaClient
-      .getEntries({
+  getCategories(categories?: any) {
+    return from(
+      this.cdaClient.getEntries({
         content_type: CONFIG.contentTypeIds.case,
-        query: categories,
+        query: categories
       })
-      .then(res => res.items);
+    ).pipe(map(res => res.items));
   }
 
   // fetch cases by categories
-  getCasesByCategoryName(name: string): Promise<Entry<any>[]> {
-    return this.cdaClient.getEntries({ query: name }).then(res => res.items);
+  getEntriesByCategoryName(name: string) {
+    return from(this.cdaClient.getEntries({ query: name })).pipe(
+      map(res => res.items)
+    );
     // return this.getCases({ 'fields.categories.sys.id': name });
   }
 
   // return a custom config if available
-  getConfig(): { space: string; accessToken: string } {
+  getConfig(): { space: string; accessToken: string; environment: string } {
     return this.config !== CONFIG.credentials
       ? Object.assign({}, this.config)
-      : { space: "", accessToken: "" };
+      : { space: "", accessToken: "", environment: "" };
   }
 
   // set a new config and store it in localStorage
-  setConfig(config: { space: string; accessToken: string }) {
+  setConfig(config: {
+    space: string;
+    accessToken: string;
+    environment: string;
+  }) {
     localStorage.setItem("catalogConfig", JSON.stringify(config));
     this.config = config;
 
@@ -131,6 +136,7 @@ export class ContentfulService {
     this.cdaClient = createClient({
       space: this.config.space,
       accessToken: this.config.accessToken,
+      environment: this.config.environment
     });
   }
 }

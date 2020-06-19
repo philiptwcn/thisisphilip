@@ -1,12 +1,13 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Entry } from "contentful";
+import { Observable } from "rxjs";
 import { ContentfulService } from "../../core/services/contentful.service";
 import { DialogData } from "./works.component";
 
 @Component({
   template: `
-    <ng-container *ngIf="case">
+    <ng-container *ngIf="case$ | async as case">
       <h1 mat-dialog-title>{{ case.fields.title }}</h1>
       <div mat-dialog-content class="container">
         <p class="content is-size-6 is-size-7-touch is-family-sans-serif">
@@ -27,10 +28,10 @@ import { DialogData } from "./works.component";
         <button mat-button mat-dialog-close>Close</button>
       </div>
     </ng-container>
-  `,
+  `
 })
 export class WorkDialogComponent implements OnInit {
-  case: Entry<any>;
+  case$: Observable<any>;
 
   constructor(
     private contentfulService: ContentfulService,
@@ -43,13 +44,6 @@ export class WorkDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.contentfulService
-      .getCaseById(this.data.id)
-      .then(result => {
-        this.case = result;
-      })
-      .catch(err => {
-        console.log("err", err);
-      });
+    this.case$ = this.contentfulService.getEntryById(this.data.id);
   }
 }
