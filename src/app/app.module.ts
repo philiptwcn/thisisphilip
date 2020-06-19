@@ -19,6 +19,7 @@ import { AboutComponent } from "./routes/about/about.component";
 import { HomeComponent } from "./routes/home/home.component";
 import { WorkDialogComponent } from "./routes/works/work-dialog.component";
 import { WorksComponent } from "./routes/works/works.component";
+import { MdToHtmlPipe } from './core/pipe/md-to-html.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { WorksComponent } from "./routes/works/works.component";
     HomeComponent,
     AboutComponent,
     WorksComponent,
-    WorkDialogComponent
+    WorkDialogComponent,
+    MdToHtmlPipe
   ],
   imports: [
     BrowserModule,
