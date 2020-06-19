@@ -1,6 +1,6 @@
 export const environment = {
-  production: true
-  // environmentId: "ENVIRONMENT_ID",
-  // spaceId: "SPACE_ID",
-  // accessToken: "ACCESS_TOKEN"
+  production: true,
+  environmentId: `${process.env.environmentId}`,
+  spaceId: `${process.env.spaceId}`,
+  accessToken: `${process.env.accessToken}`
 };
