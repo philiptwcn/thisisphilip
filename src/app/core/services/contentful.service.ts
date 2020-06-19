@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ContentfulClientApi, Entry, Space, createClient } from "contentful";
+import { Space, createClient } from "contentful";
 import { from } from "rxjs";
 import { map } from "rxjs/operators";
 import { environment } from "src/environments/environment";

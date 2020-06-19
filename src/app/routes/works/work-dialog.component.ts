@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import { Entry } from "contentful";
+
 import { Observable } from "rxjs";
 import { ContentfulService } from "../../core/services/contentful.service";
 import { DialogData } from "./works.component";
