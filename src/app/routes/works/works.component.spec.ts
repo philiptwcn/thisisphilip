@@ -1,5 +1,7 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed, async } from "@angular/core/testing";
+import { MatDialogModule } from "@angular/material/dialog";
 
+import { WorkDialogComponent } from "src/app/routes/works/work-dialog.component";
 import { WorksComponent } from "./works.component";
 
 describe("WorksComponent", () => {
@@ -8,6 +10,8 @@ describe("WorksComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [MatDialogModule],
+      providers: [WorkDialogComponent],
       declarations: [WorksComponent]
     }).compileComponents();
   }));
