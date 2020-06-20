@@ -7,9 +7,9 @@ import { environment } from "src/environments/environment";
 // change these to include your own settings
 const CONFIG = {
   credentials: {
-    space: process.env.spaceId,
-    accessToken: process.env.accessToken,
-    environment: process.env.environmentId
+    space: environment.contentful.spaceId,
+    accessToken: environment.contentful.accessToken,
+    environment: environment.contentful.environmentId
   },
 
   contentTypeIds: {
