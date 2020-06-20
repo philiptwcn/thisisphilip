@@ -11,15 +11,15 @@ import { MaterialModule } from "./core/modules/material-module";
 import { ContentfulService } from "./core/services/contentful.service";
 
 import { AppComponent } from "./app.component";
-import { FooterComponent } from "./layout/footer/footer.component";
+import { MdToHtmlPipe } from "./core/pipe/md-to-html.pipe";
 // layout
+import { FooterComponent } from "./layout/footer/footer.component";
 import { NavbarComponent } from "./layout/navbar/navbar.component";
-import { AboutComponent } from "./routes/about/about.component";
 // routes
+import { AboutComponent } from "./routes/about/about.component";
 import { HomeComponent } from "./routes/home/home.component";
 import { WorkDialogComponent } from "./routes/works/work-dialog.component";
 import { WorksComponent } from "./routes/works/works.component";
-import { MdToHtmlPipe } from './core/pipe/md-to-html.pipe';
 
 @NgModule({
   declarations: [

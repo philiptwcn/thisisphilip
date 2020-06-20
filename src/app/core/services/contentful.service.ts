@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ContentfulClientApi, Entry, Space, createClient } from "contentful";
+import { Space, createClient } from "contentful";
 import { from } from "rxjs";
 import { map } from "rxjs/operators";
 import { environment } from "src/environments/environment";
@@ -7,9 +7,9 @@ import { environment } from "src/environments/environment";
 // change these to include your own settings
 const CONFIG = {
   credentials: {
-    space: environment.spaceId,
-    accessToken: environment.accessToken,
-    environment: environment.environmentId
+    space: environment.contentful.spaceId,
+    accessToken: environment.contentful.accessToken,
+    environment: environment.contentful.environmentId
   },
 
   contentTypeIds: {

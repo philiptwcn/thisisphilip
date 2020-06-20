@@ -1,6 +1,10 @@
-export const environment = {
+import { Env } from "./env-model";
+
+export const environment: Env = {
   production: true,
-  environmentId: "ENVIRONMENT_ID",
-  spaceId: "SPACE_ID",
-  accessToken: "ACCESS_TOKEN"
+  contentful: {
+    environmentId: "{ENVIRONMENT_ID}",
+    spaceId: "{SPACE_ID}",
+    accessToken: "{ACCESS_TOKEN}"
+  }
 };
