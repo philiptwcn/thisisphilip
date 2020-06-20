@@ -10,6 +10,7 @@ import { WorkDialogComponent } from "./work-dialog.component";
 export interface DialogData {
   // case: Entry<any>;
   id: string;
+  isSpin: boolean;
 }
 
 @Component({
@@ -21,20 +22,26 @@ export class WorksComponent implements OnInit {
   cases$: Observable<any>;
   caseCategories$: Observable<any>;
   caseCategories: string[];
+  isSpin = false;
 
   constructor(
     private contentfulService: ContentfulService,
     public dialog: MatDialog
   ) {}
   openDialog(id: string): void {
-    const dialogRef = this.dialog.open(WorkDialogComponent, {
-      width: "80vw",
-      data: { id }
-    });
+    this.isSpin = true;
+    setTimeout(() => {
+      const dialogRef = this.dialog.open(WorkDialogComponent, {
+        width: "80vw",
+        data: { id }
+      });
 
-    dialogRef.afterClosed().subscribe(() => {
-      console.log("The dialog was closed");
-    });
+      dialogRef.afterOpened().subscribe(() => (this.isSpin = false));
+
+      dialogRef.afterClosed().subscribe(() => {
+        console.log("The dialog was closed");
+      });
+    }, 500);
   }
   tabSelectedTabChange($event: MatTabChangeEvent) {
     this.cases$ = this.contentfulService.getEntriesByCategoryName(
@@ -44,7 +51,9 @@ export class WorksComponent implements OnInit {
   ngOnInit(): void {
     this.caseCategories$ = this.contentfulService.getCategories();
     this.caseCategories$.subscribe(responses => {
-      this.caseCategories = responses.map(response => response.fields.category);
+      this.caseCategories = responses
+        .reverse()
+        .map(response => response.fields.category);
       this.cases$ = this.contentfulService.getEntriesByCategoryName(
         this.caseCategories[0]
       );
