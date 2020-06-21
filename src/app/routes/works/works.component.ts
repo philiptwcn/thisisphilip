@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatTabChangeEvent } from "@angular/material/tabs";
 
+import * as _ from "lodash";
 import { Observable } from "rxjs";
 
 import { ContentfulService } from "../../core/services/contentful.service";
@@ -41,20 +42,21 @@ export class WorksComponent implements OnInit {
       dialogRef.afterClosed().subscribe(() => {
         console.log("The dialog was closed");
       });
-    }, 500);
+    }, 600);
   }
   tabSelectedTabChange($event: MatTabChangeEvent) {
-    this.cases$ = this.contentfulService.getEntriesByCategoryName(
+    this.cases$ = this.contentfulService.getCasesByCategoryName(
       `${this.caseCategories[$event.index]}`
     );
   }
   ngOnInit(): void {
     this.caseCategories$ = this.contentfulService.getCategories();
     this.caseCategories$.subscribe(responses => {
-      this.caseCategories = responses
-        .reverse()
-        .map(response => response.fields.category);
-      this.cases$ = this.contentfulService.getEntriesByCategoryName(
+      this.caseCategories = _.uniq(
+        responses.reverse().map(response => response.fields.category)
+      );
+      console.log("this", this.caseCategories);
+      this.cases$ = this.contentfulService.getCasesByCategoryName(
         this.caseCategories[0]
       );
     });

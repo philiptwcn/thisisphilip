@@ -92,10 +92,13 @@ export class ContentfulService {
   }
 
   // fetch cases by categories
-  getEntriesByCategoryName(name: string) {
-    return from(this.cdaClient.getEntries({ query: name })).pipe(
-      map(res => res.items)
-    );
+  getCasesByCategoryName(name: string) {
+    return from(
+      this.cdaClient.getEntries({
+        content_type: CONFIG.contentTypeIds.case,
+        query: name
+      })
+    ).pipe(map(res => res.items));
     // return this.getCases({ 'fields.categories.sys.id': name });
   }
 

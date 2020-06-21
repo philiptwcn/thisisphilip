@@ -17,6 +17,7 @@ import { FooterComponent } from "./layout/footer/footer.component";
 import { NavbarComponent } from "./layout/navbar/navbar.component";
 // routes
 import { AboutComponent } from "./routes/about/about.component";
+import { ContactComponent } from "./routes/contact/contact.component";
 import { HomeComponent } from "./routes/home/home.component";
 import { WorkDialogComponent } from "./routes/works/work-dialog.component";
 import { WorksComponent } from "./routes/works/works.component";
@@ -30,7 +31,8 @@ import { WorksComponent } from "./routes/works/works.component";
     AboutComponent,
     WorksComponent,
     WorkDialogComponent,
-    MdToHtmlPipe
+    MdToHtmlPipe,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
