@@ -10,9 +10,10 @@ import { DialogData } from "./works.component";
     <ng-container *ngIf="case$ | async as case">
       <h1 mat-dialog-title>{{ case.fields.title }}</h1>
       <div mat-dialog-content class="container">
-        <p class="content is-size-6 is-size-7-touch is-family-sans-serif">
-          {{ case.fields.description }}
-        </p>
+        <p
+          class="content is-size-6 is-size-7-touch is-family-sans-serif"
+          [innerHTML]="case.fields.description | mdToHtml"
+        ></p>
         <div
           class="container-fluid columns is-multiline is-vcentered is-mobile"
         >
