@@ -15,6 +15,7 @@
     "types": ["node"],
     "lib": ["es2018", "dom"]
   },
+  "include": ["src/**/*.ts", "node_modules/@types"],
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true

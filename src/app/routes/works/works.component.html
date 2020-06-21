@@ -5,10 +5,10 @@
   mat-align-tabs="center"
   color="primary"
   (selectedTabChange)="tabSelectedTabChange($event)"
-  *ngIf="caseCategories$ | async as caseCategories"
+  *ngIf="caseCategories"
 >
   <ng-container *ngFor="let caseCategory of caseCategories">
-    <mat-tab label="{{ caseCategory.fields.category.toUpperCase() }}">
+    <mat-tab label="{{ caseCategory.toUpperCase() }}">
       <ng-template matTabContent *ngTemplateOutlet="caseList"> </ng-template>
     </mat-tab>
   </ng-container>
@@ -16,19 +16,24 @@
 
 <ng-template #caseList>
   <ng-container *ngIf="cases$ | async as cases">
-    <div class="has-text-centered is-clipped">
-      <ul class="columns is-multiline is-vcentered is-mobile">
-        <ng-container *ngFor="let case of cases">
-          <li class="column is-3-desktop is-6-touch">
+    <div
+      class="container has-text-centered is-clipped columns is-centered is-multiline is-mobile"
+    >
+      <ng-container *ngFor="let case of cases">
+        <ul class="column is-3-desktop is-6-touch">
+          <li>
             <p
               class="point content is-size-5 is-size-6-touch is-family-sans-serif"
               (click)="openDialog(case.sys.id)"
             >
               {{ case.fields.title }}
             </p>
-            <p class="content is-size-6 is-size-7-touch is-family-sans-serif">
-              {{ case.fields.description }}
-            </p>
+            <p
+              class="content is-size-6 is-size-7-touch is-family-sans-serif"
+              [innerHTML]="case.fields.description | mdToHtml"
+            ></p>
+          </li>
+          <li>
             <ng-container
               *ngFor="let image of case.fields.images; let first = first"
             >
@@ -36,13 +41,13 @@
                 *ngIf="first"
                 src="{{ image.fields.file.url }}"
                 alt="case image"
-                class="point"
+                class="point image"
                 (click)="openDialog(case.sys.id)"
               />
             </ng-container>
           </li>
-        </ng-container>
-      </ul>
+        </ul>
+      </ng-container>
     </div>
   </ng-container>
 </ng-template>
